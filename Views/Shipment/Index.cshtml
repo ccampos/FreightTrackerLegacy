@@ -1,0 +1,30 @@
+@model List<FreightTrackerLegacy.Models.Shipment>
+
+<h2 class="mb-3">Shipments</h2>
+<a href="/Shipment/Create" class="btn primary-button mb-3">Add Shipment</a>
+
+<table class="table table-dark table-striped table-bordered">
+	<thead class="thead-light">
+		<tr>
+			<th>ID</th>
+			<th>Destination</th>
+			<th>Status</th>
+			<th>Date</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var shipment in Model)
+		{
+			<tr>
+				<td>@shipment.Id</td>
+				<td>@shipment.Destination</td>
+				<td>@shipment.Status</td>
+				<td>@shipment.Date.ToShortDateString()</td>
+				<td>
+					<a href="/Shipment/Delete/@shipment.Id" class="btn btn-danger btn-sm">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

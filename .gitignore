@@ -1,0 +1,11 @@
+# Ignore build folders
+bin/
+obj/
+.vs/
+.vscode/
+.DS_Store
+node_modules/
+
+# Ignore third-party libraries (auto-restored)
+wwwroot/lib/
+wwwroot/node_modules/
