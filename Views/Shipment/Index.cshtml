@@ -1,30 +1,36 @@
 @model List<FreightTrackerLegacy.Models.Shipment>
 
-<h2 class="mb-3">Shipments</h2>
-<a href="/Shipment/Create" class="btn primary-button mb-3">Add Shipment</a>
+	<h2 class="mb-3">Shipments</h2>
+	<a href="/Shipment/Create" class="btn primary-button mb-3">Add Shipment</a>
 
-<table class="table table-dark table-striped table-bordered">
-	<thead class="thead-light">
-		<tr>
-			<th>ID</th>
-			<th>Destination</th>
-			<th>Status</th>
-			<th>Date</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var shipment in Model)
-		{
-			<tr>
-				<td>@shipment.Id</td>
-				<td>@shipment.Destination</td>
-				<td>@shipment.Status</td>
-				<td>@shipment.Date.ToShortDateString()</td>
-				<td>
-					<a href="/Shipment/Delete/@shipment.Id" class="btn btn-danger btn-sm">Delete</a>
-				</td>
-			</tr>
-		}
-	</tbody>
-</table>
+	<div id="shipmentList">
+		<table class="table table-dark table-striped table-bordered" id="shipmentTable">
+			<thead class="thead-light">
+				<tr>
+					<th>ID</th>
+					<th>Destination</th>
+					<th>Status</th>
+					<th>Date</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var shipment in Model)
+				{
+				<tr>
+					<td>@shipment.Id</td>
+					<td>@shipment.Destination</td>
+					<td>@shipment.Status</td>
+					<td>@shipment.Date.ToShortDateString()</td>
+					<td>
+						<button class="btn btn-danger btn-sm delete-shipment" data-id="@shipment.Id">Delete</button>
+					</td>
+				</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Include jQuery and Shipment.js -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="/lib/shipment.js"></script>
